@@ -14,7 +14,6 @@ def sigmoid(z):
     h = None
     exp = np.exp(-z)
     h = 1/(1+exp)
-        
     return h
 
 def gradientDescent(x, y, theta, alpha, num_iters):
@@ -61,7 +60,6 @@ def extract_features(tweet, freqs, process_tweet=process_tweet):
 def predict_tweet(tweet, freqs, theta):
     x = extract_features(tweet, freqs)
     y_pred = sigmoid(np.dot(x, theta))
-    
     return y_pred
 
 def test_logistic_regression(test_x, test_y, freqs, theta, predict_tweet=predict_tweet):
@@ -85,7 +83,6 @@ def test_logistic_regression(test_x, test_y, freqs, theta, predict_tweet=predict
             
     m, _ = test_y.shape
     accuracy = np.float64(sum/m)
-
     return accuracy
 
 ###
