@@ -14,17 +14,19 @@ from nltk.tokenize import TweetTokenizer
 
 nltk.download("twitter_samples")
 nltk.download("stopwords")
-all_positive_tweets = twitter_samples.strings("positive_tweets.json")
-all_negative_tweets = twitter_samples.strings("negative_tweets.json")
+
+positive_tweets = twitter_samples.strings("positive_tweets.json")
+negative_tweets = twitter_samples.strings("negative_tweets.json")
 
 fig = plt.figure(figsize=(5, 5))
 labels = "Positives", "Negatives"
-sizes = [len(all_positive_tweets), len(all_negative_tweets)]
+sizes = [len(positive_tweets), len(negative_tweets)]
+
 plt.pie(sizes, labels=labels, autopct="%1.1f%%", shadow=True, startangle=90)
 plt.axis("equal")
 plt.show()
 
-tweet = all_positive_tweets[2277]
+tweet = positive_tweets[2277]
 tweet_modified = re.sub(r'^RT[\s]+', '', tweet)
 tweet_modified = re.sub(r'https?://[^\s\n\r]+', '', tweet_modified)
 tweet_modified = re.sub(r'#', '', tweet_modified)
