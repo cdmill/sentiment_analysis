@@ -1,3 +1,7 @@
+""" implementation of logistic regression for sentiment analysis on tweets from
+the nltk corpus
+"""
+
 import nltk
 from os import getcwd
 import numpy as np
@@ -20,19 +24,15 @@ def gradientDescent(x, y, theta, alpha, num_iters):
     m, _ = x.shape
     
     for i in range(0, num_iters):
-        
         # get z, the dot product of x and theta
         z = np.dot(x, theta)
-        
         # get the sigmoid of z
         h = sigmoid(z)
-        
         # calculate the cost function
         J = (float(-1)/m) * (np.dot(np.transpose(y),np.log(h))+np.dot(np.transpose(1-y),np.log(1-h)))
-
         # update the weights theta
         theta = theta - alpha/m * (np.dot(np.transpose(x),(h-y)))
-        
+
     J = float(J)
     return J, theta
 
@@ -47,10 +47,8 @@ def extract_features(tweet, freqs, process_tweet=process_tweet):
     
     # loop through each word in the list of words
     for word in word_l:
-        
         # increment the word count for the positive label 1
         x[0,1] += freqs.get((word,1.0), 0)
-        
         # increment the word count for the negative label 0
         x[0,2] += freqs.get((word,0.0), 0)
         
@@ -87,13 +85,13 @@ def test_logistic_regression(test_x, test_y, freqs, theta, predict_tweet=predict
 
 ###
 
-all_positive_tweets = twitter_samples.strings('positive_tweets.json')
-all_negative_tweets = twitter_samples.strings('negative_tweets.json')
+positive_tweets = twitter_samples.strings('positive_tweets.json')
+negative_tweets = twitter_samples.strings('negative_tweets.json')
 
-test_pos = all_positive_tweets[4000:]
-train_pos = all_positive_tweets[:4000]
-test_neg = all_negative_tweets[4000:]
-train_neg = all_negative_tweets[:4000]
+test_pos = positive_tweets[4000:]
+train_pos = positive_tweets[:4000]
+test_neg = negative_tweets[4000:]
+train_neg = negative_tweets[:4000]
 
 train_x = train_pos + train_neg 
 test_x = test_pos + test_neg
@@ -115,3 +113,4 @@ Y = train_y
 
 # Apply gradient descent
 J, theta = gradientDescent(X, Y, np.zeros((3, 1)), 1e-9, 1500)
+

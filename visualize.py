@@ -1,3 +1,8 @@
+""" this file plots the data from the sentiment analysis on tweets from the
+nltk corpus using matplotlib
+"""
+
+
 import nltk                         
 from os import getcwd
 import pandas as pd                 
