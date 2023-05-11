@@ -26,6 +26,7 @@ plt.pie(sizes, labels=labels, autopct="%1.1f%%", shadow=True, startangle=90)
 plt.axis("equal")
 plt.show()
 
+# remove punctuation, links, etc from tweets
 tweet = positive_tweets[2277]
 tweet_modified = re.sub(r'^RT[\s]+', '', tweet)
 tweet_modified = re.sub(r'https?://[^\s\n\r]+', '', tweet_modified)
@@ -36,11 +37,13 @@ tweet_tokens = tokenizer.tokenize(tweet_modified)
 
 stopwords_english = stopwords.words("english")
 
+# remove stop words from tweets
 tweets_clean = []
 for word in tweet_tokens:
     if word not in stopwords_english and word not in string.punctuation:
         tweets_clean.append(word)
 
+# stem the tweets
 stemmer = PorterStemmer()
 tweets_stem = []
 for word in tweets_clean:

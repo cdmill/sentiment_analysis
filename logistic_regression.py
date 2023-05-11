@@ -42,7 +42,7 @@ def extract_features(tweet, freqs, process_tweet=process_tweet):
     # 3 elements in the form of a 1 x 3 vector
     x = np.zeros((1, 3)) 
     
-    #bias term is set to 1
+    # bias term is set to 1
     x[0,0] = 1 
     
     # loop through each word in the list of words
@@ -89,8 +89,8 @@ positive_tweets = twitter_samples.strings('positive_tweets.json')
 negative_tweets = twitter_samples.strings('negative_tweets.json')
 
 test_pos = positive_tweets[4000:]
-train_pos = positive_tweets[:4000]
 test_neg = negative_tweets[4000:]
+train_pos = positive_tweets[:4000]
 train_neg = negative_tweets[:4000]
 
 train_x = train_pos + train_neg 
