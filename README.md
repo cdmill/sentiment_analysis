@@ -1,6 +1,6 @@
 # README
 
-This is a collection of files used for performing sentiment analysis using linear regression.
+This is a collection of files used for performing sentiment analysis using methods such as linear regression and naive bayes..
 
 ## Logistic Regression
 
