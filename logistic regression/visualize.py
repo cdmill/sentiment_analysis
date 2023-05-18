@@ -2,14 +2,22 @@
 nltk corpus using matplotlib
 """
 
-
 import nltk                         
-from os import getcwd
 import pandas as pd                 
 from nltk.corpus import twitter_samples 
 import matplotlib.pyplot as plt    
 import numpy as np                  
-from utils import process_tweet, build_freqs 
+
+# pretrained logistic regression model
+theta = [6.03518871e-08, 5.38184972e-04, -5.58300168e-04]
+
+# Equation for the separation plane
+def neg(theta, pos):
+    return (-theta[0] - pos * theta[1]) / theta[2]
+
+# Equation for the direction of the sentiments change
+def direction(theta, pos):
+    return    pos * theta[2] / theta[1]
 
 nltk.download('twitter_samples')
 
@@ -24,13 +32,10 @@ train_pos  = positive_tweets[:4000]
 train_neg  = negative_tweets[:4000]
 
 train_x = train_pos + train_neg
-data = pd.read_csv('./data/logistic_features.csv')
+data = pd.read_csv('./logistic_features.csv')
 
 X = data[['bias', 'positive', 'negative']].values 
 Y = data['sentiment'].values
-
-# pretrained logistic regression model
-theta = [6.03518871e-08, 5.38184972e-04, -5.58300168e-04]
 
 # Plot the samples using columns 1 and 2 of the matrix
 fig, ax = plt.subplots(figsize = (8, 8))
@@ -41,14 +46,6 @@ colors = ['red', 'green']
 ax.scatter(X[:,1], X[:,2], c=[colors[int(k)] for k in Y], s = 0.1)  
 plt.xlabel("Positive")
 plt.ylabel("Negative")
-
-# Equation for the separation plane
-def neg(theta, pos):
-    return (-theta[0] - pos * theta[1]) / theta[2]
-
-# Equation for the direction of the sentiments change
-def direction(theta, pos):
-    return    pos * theta[2] / theta[1]
 
 # Plot the samples using columns 1 and 2 of the matrix
 fig, ax = plt.subplots(figsize = (8, 8))
