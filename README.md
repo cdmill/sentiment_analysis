@@ -15,3 +15,8 @@ Example input/output:
 python3 main.py "today is a good day"
 Positive sentiment
 ```
+
+```
+python3 main.py "today is a bad day"
+Negative sentiment
+```
