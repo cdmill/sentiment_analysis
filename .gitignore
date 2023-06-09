@@ -1,2 +1,3 @@
 pipfile*
 .DS_Store
+.vscode
