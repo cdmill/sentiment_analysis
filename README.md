@@ -23,6 +23,8 @@ Negative sentiment
 
 ## Naive bayes
 
+Example input/output:
+
 ```
 python3 main.py "today is a good day"
 1.3093132593867
