@@ -1,9 +1,9 @@
 # README
 
-This is a collection of files used for performing sentiment analysis using methods such as linear regression and naive bayes..
+This is a collection of files used for performing sentiment analysis using methods such as linear regression and naive bayes.
 
-An example implementatin of a sentiment analysis model that is trained on the NLTK module's twitter corpus.
-The model(s) predicts the sentiment of a tweet or inputted text.
+Each sentiment analysis model is trained on the NLTK module's twitter corpus.
+The models predicts the sentiment of a tweet or inputted text.
 
 If you want to test your own tweet on the model, pass in a string via the command line to the `main.py` file and see what the model predicts.
 
