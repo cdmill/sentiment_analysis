@@ -11,12 +11,12 @@ If you want to test your own tweet on the model, pass in a string via the comman
 
 Example input/output:
 
-```
+```python
 python3 main.py "today is a good day"
 Positive sentiment
 ```
 
-```
+```python
 python3 main.py "today is a bad day"
 Negative sentiment
 ```
@@ -25,12 +25,12 @@ Negative sentiment
 
 Example input/output:
 
-```
+```python
 python3 main.py "today is a good day"
 1.3093132593867
 ```
 
-```
+```python
 python3 main.py "today is a bad day"
 -0.8166482979280296
 ```
